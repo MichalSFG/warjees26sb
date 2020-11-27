@@ -9,6 +9,18 @@
 <body>
 <h1><spring:message code="app.title"/></h1>
 
+<sec:authorize access="hasRole('ADMIN')">
+    <h3>MAM ROLĘ ADMIN</h3>
+</sec:authorize>
+
+<sec:authorize access="hasRole('USER')">
+    <h3>MAM ROLĘ USER</h3>
+</sec:authorize>
+
+<sec:authorize access="isAuthenticated()">
+    <p>Zalogowany jako: <sec:authentication property="principal.username"/></p>
+    <p>Posiada rolę: <sec:authentication property="authorities"/></p>
+</sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
     <form action="<c:url value="/logout"/>" method="post">

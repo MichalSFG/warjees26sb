@@ -19,11 +19,11 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
+
     @Override
     public AppUser findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
-
 
     @Override
     public void saveUser(AppUser appUser) {

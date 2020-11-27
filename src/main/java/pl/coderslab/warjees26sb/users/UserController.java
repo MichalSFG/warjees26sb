@@ -17,10 +17,10 @@ public class UserController {
     @ResponseBody
     public String createUser() {
         AppUser appUser = new AppUser();
-        appUser.setUsername("admin");
-        appUser.setPassword("admin");
+        appUser.setUsername("mike");
+        appUser.setPassword("mike");
         userService.saveUser(appUser);
-        return "admin";
+        return "added";
     }
 
 }
