@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,8 +23,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public AppUser findByUserName(String username) {
-        return userRepository.findByUsername(username);
+    public AppUser findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override
@@ -33,4 +35,24 @@ public class UserServiceImpl implements UserService {
         appUser.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(appUser);
     }
+
+    @Override
+    public void updateUser(AppUser appUser) {
+        userRepository.save(appUser);
+    }
+
+    @Override
+    public List<AppUser> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public void updateUsers() {
+        List<AppUser> users = findAll();
+        users.forEach(appUser -> {
+            appUser.setSeat(null);
+            updateUser(appUser);
+        });
+    }
+
 }

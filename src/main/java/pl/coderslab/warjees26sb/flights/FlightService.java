@@ -14,7 +14,11 @@ public interface FlightService {
 
     Optional<Flight> get(long flightNumber);
 
+    Flight find(long flNum);
+
     void delete(long flightNumber);
 
     void update(Flight flight);
+
+    void deleteAll();
 }

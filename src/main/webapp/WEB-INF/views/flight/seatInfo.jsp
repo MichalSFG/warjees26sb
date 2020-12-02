@@ -11,7 +11,7 @@
 <h3>Arrival airport: ${flight.arrivalAirport} >>> Arrival time: ${flight.scheduledTimeOfArr}</h3>
 
 <h1>Your seat: ${seat}</h1>
-<form:form action="/dto/seatsToSwap" method="post">
+<form:form action="/flight/targetSeats" method="post">
     Teraz podaj miejsca, które cię interesują:<br>
     <table style="width: 50%" border="1px">
         <tr>

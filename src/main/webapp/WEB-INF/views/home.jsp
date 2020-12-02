@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1><spring:message code="app.title"/></h1>
+<h3><a href="/login">Login to FCO</a> </h3>
 
 <sec:authorize access="hasRole('ADMIN')">
     <h3>MAM ROLĘ ADMIN</h3>

@@ -6,15 +6,12 @@
     <title>Title</title>
 </head>
 <body>
-<c:forEach items="${flights}" var="item">
-    Status: ${item.flightStatus}<br>
-    Type: ${item.type}<br>
-    Flight number: ${item.flightNumber}<br>
-    Airline name: ${item.airlineName}<br>
-    Departure airport: ${item.deptAirport} >>> Departure time: ${item.deptTime}<br>
-    Arrival airport: ${item.arrAirport} >>> Arrival time: ${item.arrTime}
-</c:forEach>
-<form:form action="/dto/seatNo" method="post">
+
+    Flight number: ${flight.flightNumber}<br>
+    Departure airport: ${flight.departureAirport} >>> Departure time: ${flight.scheduledTimeOfDept}<br>
+    Arrival airport: ${flight.arrivalAirport} >>> Arrival time: ${flight.scheduledTimeOfArr}
+
+<form:form action="/flight/seatNo" method="post">
     Jeśli dane są poprawne, zaznacz swoje miejsce:
     <label>
         <select name="seatNum">

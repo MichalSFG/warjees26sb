@@ -13,11 +13,8 @@
 <c:forEach items="${seats}" var="item">
     <h4>${item}</h4>
 </c:forEach>
-<p>Jeśli pasażer siedzący na jednym z miejsc:
-    <c:forEach items="${seats}" var="item">
-        ${item}
-    </c:forEach>
-    zaznaczył twoje miejsce (${seat}) jako
-    interesujące go, oba miejsca zaświecą się na zielono. I można się zamieniać!</p>
+<p>Jeśli pasażer siedzący na jednym z miejsc ${seats} zaznaczył twoje miejsce (${seat}) jako
+    interesujące go, będziesz mógł się z nim zamienić. Wynik będzie dostępny 20 min po starcie!</p>
+<h3><a href="/flight/home">Przejdź do strony głównej</a> </h3>
 </body>
 </html>
