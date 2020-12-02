@@ -24,12 +24,12 @@
 
 </head>
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-primary">
 
 <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0 bg-gradient-secondary">
+        <div class="card-body p-0 bg-gradient-success">
             <!-- Nested Row within Card Body -->
             <div class="row">
                 <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
@@ -56,7 +56,10 @@
                                 </div>
                             </div>
                             <div class="form-group" style="color: red">
-                                <form:errors path="lastName">Wpisz nazwisko!</form:errors>
+                                <form:errors path="firstName">First name is mandatory!</form:errors>
+                            </div>
+                            <div class="form-group" style="color: red">
+                                <form:errors path="lastName">Last name is mandatory!</form:errors>
                             </div>
                             <div class="form-group">
                                 <form:input path="email" type="email" class="form-control form-control-user"
@@ -83,11 +86,11 @@
                             <%--                            </a>--%>
                         </form:form>
                         <hr>
+<%--                        <div class="text-center">--%>
+<%--                            <a class="small" href="forgot-password.html">Forgot Password?</a>--%>
+<%--                        </div>--%>
                         <div class="text-center">
-                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div>
-                        <div class="text-center">
-                            <a class="small" href="/login">Already have an account? Login!</a>
+                            <a class="small" style="color: white" href="/login">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>

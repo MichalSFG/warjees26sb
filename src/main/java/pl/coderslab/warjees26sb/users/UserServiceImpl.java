@@ -28,6 +28,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Optional<AppUser> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
     public void saveUser(AppUser appUser) {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
         appUser.setEnabled(1);

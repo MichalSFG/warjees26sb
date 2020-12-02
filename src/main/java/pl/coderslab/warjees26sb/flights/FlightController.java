@@ -18,12 +18,14 @@ import pl.coderslab.warjees26sb.seats.TargetSeat;
 import pl.coderslab.warjees26sb.seats.TargetSeatService;
 import pl.coderslab.warjees26sb.users.AppUser;
 import pl.coderslab.warjees26sb.users.CurrentUser;
+import pl.coderslab.warjees26sb.users.Role;
 import pl.coderslab.warjees26sb.users.UserService;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -49,6 +51,23 @@ public class FlightController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String getForm(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        for (Role role : currentUser.getAppUser().getRoles()) {
+            if (role.getName().equals("ROLE_ADMIN")) {
+                return "redirect:/admin/dashboard";
+            }
+        }
+
+        if (currentUser.getAppUser().getEnabled() == 0) {
+            return "redirect:/login";
+        }
+
+        try {
+            Flight flight = currentUser.getAppUser().getSeat().getFlight();
+            model.addAttribute("flight", flight);
+        } catch (NullPointerException e) {
+            logger.info("no flight details available");
+        }
+
         model.addAttribute("user", currentUser.getAppUser());
         return "flight/homepage";
     }

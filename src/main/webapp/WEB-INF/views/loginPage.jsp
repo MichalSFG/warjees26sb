@@ -44,6 +44,9 @@
                                     <c:if test="${not empty param.error}">
                                         <h3 style="color: red">Wrong email or password!</h3>
                                     </c:if>
+                                    <c:if test="${not empty access}">
+                                        <h3 style="color: red">${access}</h3>
+                                    </c:if>
                                 </div>
                                 <form:form class="user" method="post">
                                     <div class="form-group">
