@@ -11,4 +11,6 @@ public interface SeatService {
     void update(Seat seat);
 
     void deleteAll();
+
+    void delete(Seat seat);
 }

@@ -9,6 +9,8 @@ public interface UserService {
 
     Optional<AppUser> findById(Long id);
 
+    AppUser getUserById(Long id);
+
     void saveUser(AppUser appUser);
 
     void updateUser(AppUser appUser);
@@ -16,5 +18,9 @@ public interface UserService {
     void updateUsers();
 
     List<AppUser> findAll();
+
+    void detachUserFromRole(Long id);
+
+    void delete(AppUser appUser);
 
 }

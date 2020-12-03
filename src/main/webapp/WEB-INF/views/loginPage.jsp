@@ -33,10 +33,11 @@
         <div class="col-xl-10 col-lg-12 col-md-9">
 
             <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0 bg-gradient-secondary">
+                <div class="card-body p-0 bg-gradient-light">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+<%--                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>--%>
+                        <div class="col-lg-6"><img width="100%" src="<c:url value="/resources/img/5.jpg"/>" alt=""></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
@@ -78,7 +79,7 @@
 <%--                                    <a class="small" href="forgot-password.html">Forgot Password?</a>--%>
 <%--                                </div>--%>
                                 <div class="text-center">
-                                    <a class="small" href="/register">Create an Account!</a>
+                                    <a class="small" style="color:black;" href="/register">Create an Account!</a>
                                 </div>
                             </div>
                         </div>

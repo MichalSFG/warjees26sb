@@ -21,7 +21,7 @@ public class Seat {
     @ManyToOne
     private Flight flight;
 
-    @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<TargetSeat> targetSeat = new ArrayList<>();
 
 }

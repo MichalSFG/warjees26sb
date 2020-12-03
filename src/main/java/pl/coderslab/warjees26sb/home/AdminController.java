@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.warjees26sb.seats.Seat;
+import pl.coderslab.warjees26sb.seats.SeatService;
 import pl.coderslab.warjees26sb.users.AppUser;
 import pl.coderslab.warjees26sb.users.CurrentUser;
 import pl.coderslab.warjees26sb.users.UserService;
@@ -20,11 +22,13 @@ import java.util.Optional;
 public class AdminController {
 
     private final UserService userService;
+    private final SeatService seatService;
 
     private final Logger logger = (Logger) LoggerFactory.getLogger(AdminController.class);
 
-    public AdminController(UserService userService) {
+    public AdminController(UserService userService, SeatService seatService) {
         this.userService = userService;
+        this.seatService = seatService;
     }
 
     @GetMapping("/dashboard")
@@ -47,6 +51,25 @@ public class AdminController {
             }
             userService.updateUser(appUser);
         });
+        return "redirect:/admin/dashboard";
+    }
+
+    @RequestMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        AppUser appUser = userService.getUserById(id);
+        Seat seat = appUser.getSeat();
+
+        appUser.setRoles(null);
+        appUser.setSeat(null);
+        userService.updateUser(appUser);
+
+        seat.setFlight(null);
+        seatService.update(seat);
+        seatService.delete(seat);
+
+//        userService.detachUserFromRole(appUser.getId());
+        userService.delete(appUser);
+
         return "redirect:/admin/dashboard";
     }
 

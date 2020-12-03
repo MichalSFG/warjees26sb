@@ -24,15 +24,16 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-dark">
 
 <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0 bg-gradient-success">
+        <div class="card-body p-0 bg-gradient-light">
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+<%--                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>--%>
+                <div class="col-lg-5"><img width="100%" src="<c:url value="/resources/img/boeing_777_300er_566378.jpg"/>" alt=""></div>
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
@@ -75,7 +76,7 @@
                                            placeholder="Repeat Password">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
+                            <button type="submit" class="btn btn-success btn-user btn-block">Register Account</button>
 
                             <%--                            <hr>--%>
                             <%--                            <a href="index.html" class="btn btn-google btn-user btn-block">--%>
@@ -90,7 +91,7 @@
 <%--                            <a class="small" href="forgot-password.html">Forgot Password?</a>--%>
 <%--                        </div>--%>
                         <div class="text-center">
-                            <a class="small" style="color: white" href="/login">Already have an account? Login!</a>
+                            <a class="small" style="color: black" href="/login">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>

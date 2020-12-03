@@ -32,4 +32,9 @@ public class SeatServiceImpl implements SeatService {
     public void deleteAll() {
         seatRepository.deleteAll();
     }
+
+    @Override
+    public void delete(Seat seat) {
+        seatRepository.delete(seat);
+    }
 }

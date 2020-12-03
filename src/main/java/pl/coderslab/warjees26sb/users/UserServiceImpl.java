@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public AppUser getUserById(Long id) {
+        return userRepository.findAppUserById(id);
+    }
+
+    @Override
     public void saveUser(AppUser appUser) {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
         appUser.setEnabled(1);
@@ -49,6 +54,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<AppUser> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public void detachUserFromRole(Long id) {
+        userRepository.deleteByUserId(id);
+    }
+
+    @Override
+    public void delete(AppUser appUser) {
+        userRepository.delete(appUser);
     }
 
     @Override
