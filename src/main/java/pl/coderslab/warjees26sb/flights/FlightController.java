@@ -25,7 +25,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -75,7 +74,7 @@ public class FlightController {
     @RequestMapping(value = "/home", method = RequestMethod.POST)
     public String getFlightDetails(@RequestParam long flightNumber, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         logger.info("FR " + flightNumber);
-        String api = "http://aviation-edge.com/v2/public/timetable?key=07cf31-be1c81&flight_iata=FR"
+        String api = "http://aviation-edge.com/v2/public/timetable?key=&flight_iata=FR"
                 + flightNumber + "&type=arrival";
 
         FlightDto[] flights;
@@ -118,6 +117,14 @@ public class FlightController {
     @PostMapping("/seatNo")
     public String getPaxSeatNo(@RequestParam String seatNum, @RequestParam String seatLetter,
                                Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        Seat oldSeat = null;
+        try {
+            oldSeat = currentUser.getAppUser().getSeat();
+            logger.info("old seat is null");
+        } catch (NullPointerException e) {
+            logger.info("no seat assigned yet");
+        }
+
         Flight fl = flightService.find(flight.getFlightNumber());
         String paxSeat = seatNum + seatLetter;
         Seat seat = new Seat();
@@ -127,6 +134,10 @@ public class FlightController {
         AppUser user = currentUser.getAppUser();
         user.setSeat(seat);
         userService.updateUser(user);
+
+        if (oldSeat != null) {
+            seatService.delete(oldSeat);
+        }
 
         model.addAttribute("user", currentUser.getAppUser());
         model.addAttribute("seat", paxSeat);

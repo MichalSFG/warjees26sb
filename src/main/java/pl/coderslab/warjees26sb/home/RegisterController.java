@@ -38,7 +38,7 @@ public class RegisterController {
         }
 
         if (!appUser.getPassword().equals(rePassword)) {
-            model.addAttribute("passwordMessage", "Re-enter password correctly!");
+            model.addAttribute("passwordMessage", "Repeat password correctly!");
             return "register";
         }
 

@@ -76,6 +76,9 @@
                                            placeholder="Repeat Password">
                                 </div>
                             </div>
+                            <div class="form-group" style="color: red">
+                                <form:errors path="password">Password is mandatory!</form:errors>
+                            </div>
                             <button type="submit" class="btn btn-success btn-user btn-block">Register Account</button>
 
                             <%--                            <hr>--%>
