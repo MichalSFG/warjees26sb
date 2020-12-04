@@ -74,7 +74,7 @@ public class FlightController {
     @RequestMapping(value = "/home", method = RequestMethod.POST)
     public String getFlightDetails(@RequestParam long flightNumber, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         logger.info("FR " + flightNumber);
-        String api = "http://aviation-edge.com/v2/public/timetable?key=&flight_iata=FR"
+        String api = "http://aviation-edge.com/v2/public/timetable?key=[API KEY]&flight_iata=FR"
                 + flightNumber + "&type=arrival";
 
         FlightDto[] flights;
